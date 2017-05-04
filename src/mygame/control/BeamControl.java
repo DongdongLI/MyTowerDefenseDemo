@@ -31,6 +31,7 @@ public class BeamControl extends AbstractControl{
 
     @Override
     protected void controlUpdate(float tpf) {
+        //spatial.removeFromParent();
         state.placeBeam(tower, creep);
     }
     

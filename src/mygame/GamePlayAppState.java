@@ -54,6 +54,10 @@ public class GamePlayAppState extends AbstractAppState{
         return creepNode;
     }
     
+    public Node getBeamNode() {
+        return beamNode;
+    }
+    
     public AssetManager getAssetManager() {
         return assetManager;
     }
@@ -103,8 +107,7 @@ public class GamePlayAppState extends AbstractAppState{
     public void setLastGameWon(Boolean lastGameWon) {
         this.lastGameWon = lastGameWon;
     }
-    
-    
+   
     
     @Override
     public void initialize(AppStateManager stateManager, Application app) {
@@ -193,7 +196,7 @@ public class GamePlayAppState extends AbstractAppState{
         blue.setColor("Color", ColorRGBA.Blue);
         beamGeometry.setMaterial(blue);
         beamNode.attachChild(beamGeometry);
-        beamGeometry.addControl(new BeamControl(tower, creep, this));
+        //beamGeometry.addControl(new BeamControl(tower, creep, this));
     }
     
     private void placeCreep(Vector3f v){
@@ -205,7 +208,7 @@ public class GamePlayAppState extends AbstractAppState{
         creepGeom.setLocalTranslation(v.x,v.y+creep.yExtent,v.z);
         creepNode.attachChild(creepGeom);
         creepGeom.setUserData("index", creepIndex++);
-        creepGeom.setUserData("health", 99);
+        creepGeom.setUserData("health", 270);
         creepGeom.addControl(new CreepControl(this));
     }
 }

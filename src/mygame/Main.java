@@ -31,7 +31,7 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        flyCam.setMoveSpeed(60);
+        flyCam.setMoveSpeed(20);
         
         GamePlayAppState gamePlayState = new GamePlayAppState();
         stateManager.attach(gamePlayState);

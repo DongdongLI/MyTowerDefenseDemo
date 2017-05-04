@@ -81,13 +81,8 @@ public class TowerControl extends AbstractControl{
             if(reachable.size() != 0){
                 for(CreepControl control: reachable){
                     // shoot them
-                    Vector3f towerLocation = spatial.getLocalTranslation();
-                    Line beam = new Line(new Vector3f(towerLocation.x, towerLocation.y+3f, towerLocation.z), control.getSpatial().getLocalTranslation());
-                    Geometry geometry = new Geometry("beam", beam);
-                    Material blue = new Material(state.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-                    blue.setColor("Color", ColorRGBA.Blue);
-                    geometry.setMaterial(blue);
-                    state.getRootNode().attachChild(geometry);
+                    state.placeBeam((Geometry)spatial, (Geometry)control.getSpatial());
+
                     // decrease creep health
                     control.setCreepHealth(control.getCreepHealth()-1);
                     // decrease bullet counts
@@ -97,6 +92,10 @@ public class TowerControl extends AbstractControl{
                 }
             }
         }
+        
+        int numOfChild = state.getBeamNode().getChildren().size();
+        if(numOfChild !=0 )
+            state.getBeamNode().getChildren().remove(0);
     }
     
     
